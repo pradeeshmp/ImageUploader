@@ -55,5 +55,12 @@ app.post('/UploadImageData', function (req, res) {
 });
 
 //if you change port no. here, Please update base tag too. 
-app.listen(3000);
-console.log("Server has started");
+
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+app.listen(port, ipaddress, function() {
+    // Do your stuff
+    console.log("Server Started Successfully...")
+});
+//app.listen(3000);
+//console.log("Server has started");
